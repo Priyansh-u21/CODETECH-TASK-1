@@ -1,0 +1,63 @@
+
+/*TEMPERATURE CONVERTER*/
+
+
+#include <stdio.h>
+
+void celsiusToOthers(double temp) {
+    double fahrenheit = (temp * 9.0 / 5.0) + 32.0;
+    double kelvin = temp + 273.15;
+    printf("Celsius to Fahrenheit: %.2f\n", fahrenheit);
+    printf("Celsius to Kelvin: %.2f\n", kelvin);
+}
+
+void fahrenheitToOthers(double temp) {
+    double celsius = (temp - 32.0) * 5.0 / 9.0;
+    double kelvin = (temp - 32.0) * 5.0 / 9.0 + 273.15;
+    printf("Fahrenheit to Celsius: %.2f\n", celsius);
+    printf("Fahrenheit to Kelvin: %.2f\n", kelvin);
+}
+
+void kelvinToOthers(double temp) {
+    double celsius = temp - 273.15;
+    double fahrenheit = (temp - 273.15) * 9.0 / 5.0 + 32.0;
+    printf("Kelvin to Celsius: %.2f\n", celsius);
+    printf("Kelvin to Fahrenheit: %.2f\n", fahrenheit);
+}
+
+int main() {
+    double temperature;
+    int choice;
+
+    printf("Temperature Conversion Program\n");
+    printf("1. Convert from Celsius\n");
+    printf("2. Convert from Fahrenheit\n");
+    printf("3. Convert from Kelvin\n");
+    printf("Enter your choice: ");
+    scanf("%d", &choice);
+
+    if (choice < 1 || choice > 3) {
+        printf("Invalid choice!\n");
+        return 1;
+    }
+
+    printf("Enter the temperature to convert: ");
+    scanf("%lf", &temperature);
+
+    switch (choice) {
+        case 1:
+            celsiusToOthers(temperature);
+            break;
+        case 2:
+            fahrenheitToOthers(temperature);
+            break;
+        case 3:
+            kelvinToOthers(temperature);
+            break;
+        default:
+            printf("Invalid choice!\n");
+            return 1;
+    }
+
+    return 0;
+}
